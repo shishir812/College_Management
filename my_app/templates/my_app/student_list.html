@@ -1,0 +1,90 @@
+{% extends 'my_app/base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>STUDENT_LIST</title>
+{% endblock title %}
+
+
+
+
+
+{% block content %}
+
+{% for message in messages %}
+<div class="alert alert-danger" role="alert">
+  {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <span class="navbar-brand mb-0 h1">STUDENT-LIST</span>
+</nav>
+
+
+
+
+
+<table class="table">
+  <tbody>
+
+    <tr>
+
+      <th scope="col">NO.</th>
+      <th scope="col">NAME</th>
+      <th scope="col">EDIT</th>
+      <th scope="col">DELETE</th>
+      <th scope="col">DETAIL</th>
+
+    </tr>
+
+
+
+  {% for student in student_list %}
+   <tr>
+        <th scope="row">{{ student.id }}</th>
+        <td>{{ student }}</td>
+        <td><a href="{% url 'student_form_update' student.id %}">EDIT</a></td>
+        <td><a href="{% url 'student_delete' student.id %}">DELETE</a></td>
+        <td><a href="{% url 'student_detail' student.id %}">DETAIL</a></td>
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+
+
+</table>
+
+
+
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-end">
+               <li class="page-item">
+                <a class="page-link" href="?page=1" >Previous</a></li>
+
+                {% if all_tasks.has_previous %}
+                     <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+
+                {% endif %}
+
+                  <li class="page-item"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+
+                {% if all_tasks.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                {% endif %}
+
+                  <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Next</a></li>
+              </ul>
+            </nav>
+
+
+
+
+
+{% endblock content %}
+

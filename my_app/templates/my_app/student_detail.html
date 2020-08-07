@@ -1,0 +1,33 @@
+{% extends 'my_app/base.html' %}
+{% load static %}
+
+
+{% block title %}
+
+<title>Student_Detail!!</title>
+
+{% endblock title %}
+
+
+
+
+
+{% block content %}
+
+<div class="jumbotron">
+
+  <h1 class="display-4">Hello, {{ obj.name }}!</h1>
+  <p class="lead">Here is your full information.</p>
+  <hr class="my-4">
+
+    <h1>Your Name: {{ obj.name }}</h1>
+    <h2>Your Roll: {{ obj.roll }}</h2>
+    <h2>Your Year: {{ obj.year }}nd</h2>
+    <h3>Your Email Id: {{ obj.mail }}</h3>
+    <h3>Your Phone No: {{ obj.phone }}</h3>
+    <h3>Your Course: {{ obj.course }}</h3>
+
+</div>
+
+
+{% endblock content %}

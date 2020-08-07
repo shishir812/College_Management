@@ -1,0 +1,36 @@
+{% extends 'my_app/base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>STUDENT-FORM!</title>
+{% endblock title %}
+
+
+
+
+
+{% block content %}
+
+
+<form method="POST">
+    {% csrf_token %}
+
+
+<div class="container">
+    <h2>
+        {{ form.as_p }}
+    </h2>
+
+
+    <input type="submit" value="Save">
+
+</div>
+
+
+
+
+
+</form>
+
+{% endblock content %}
